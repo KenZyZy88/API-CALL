@@ -25,10 +25,6 @@ read_table = pd.DataFrame(columns=['platformId','platform','date','updated','typ
 ingest_table[['facebook_id', 'post_id']] = ingest_table['platformId'].str.split('_', expand=True)
 ingest_table['captionid'] = [row.split('|')[0] for row in ingest_table['id']]
 
-
-
-
-
 #Ingest data to read_table - move to NoSQL if have time
 read_table['platformId'] = ingest_table['platformId']
 read_table['platform'] = ingest_table['platform']
@@ -74,9 +70,14 @@ def main_table():
 def media_table():
     media_table = pd.DataFrame(columns=['platformid','type','url','height','width','full'])
     for x in range(0, len(ingest_table)): 
+        for df in ingest_table['media'][x]:
+        # df = ingest_table['media'][x][0]
 
-        df = ingest_table['media'][x][0]
-        media_table = media_table._append({'platformid':ingest_table['platformId'][x],'type': df['type'], 'url': df['url'], 'height': df['height'], 'width': df['width'], 'full': df['full']}, ignore_index=True)
+        # media_table = media_table._append({'platformid':ingest_table['platformId'][x],'type': df['type'], 'url': df['url'], 'height': df['height'], 'width': df['width'], 'full': df['full']}, ignore_index=True)
+            if 'full' in df:
+                media_table = media_table._append({'platformid':ingest_table['platformId'][x],'type': df['type'], 'url': df['url'], 'height': df['height'], 'width': df['width'], 'full': df['full']}, ignore_index=True)
+            else:
+                media_table = media_table._append({'platformid':ingest_table['platformId'][x],'type': df['type'], 'url': df['url'], 'height': df['height'], 'width': df['width'], 'full': None}, ignore_index=True)
 
     if os.path.exists('C:/Users/User/Desktop/sph/media.txt'):
         media_table.to_csv('C:/Users/User/Desktop/sph/media.txt', sep='|', index=True, mode='a', header=False)
@@ -111,6 +112,6 @@ def statistic_table():
 
       
 main_table()
-# media_table()
-#account_table()
-# statistic_table()
+media_table()
+account_table()
+statistic_table()
