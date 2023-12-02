@@ -19,11 +19,12 @@ PostReceive = DataReceieve["posts"]
 ingest_table= pd.DataFrame(PostReceive)
 
 #Create table in proper format
-read_table = pd.DataFrame(columns=['platformId','platform','date','updated','type','title','captionid','caption','description','message','expandedLinks','link','facebook_id','post_id','postUrl','subscriberCount','score','media','statistics','account','languageCode','legacyId','id','videoLengthMS','imageText'])
+read_table = pd.DataFrame(columns=['platformId','platform','date','updated','type','title','captionid','caption','description','message','expandedLinks','link','facebook_id','post_id','postUrl','subscriberCount','score','languageCode','legacyId','videoLengthMS','imageText'])
 
 #Transform Data - create facebook_id, post_id and captionid(publisher) for better search function
 ingest_table[['facebook_id', 'post_id']] = ingest_table['platformId'].str.split('_', expand=True)
 ingest_table['captionid'] = [row.split('|')[0] for row in ingest_table['id']]
+ingest_table['title'] = ingest_table['title'].str.replace('|', '')
 
 #Ingest data to read_table - move to NoSQL if have time
 read_table['platformId'] = ingest_table['platformId']
@@ -43,12 +44,8 @@ read_table['facebook_id'] = ingest_table['facebook_id']
 read_table['postUrl'] = ingest_table['postUrl']
 read_table['subscriberCount'] = ingest_table['subscriberCount']
 read_table['score'] = ingest_table['score']
-read_table['media'] = ingest_table['media']
-read_table['statistics'] = ingest_table['statistics']
-read_table['account'] = ingest_table['account']
 read_table['languageCode'] = ingest_table['languageCode']
 read_table['legacyId'] = ingest_table['legacyId']
-read_table['id'] = ingest_table['id']
 if 'videoLengthMS' in ingest_table.columns:
     read_table['videoLengthMS'] = ingest_table['videoLengthMS']
 else:
@@ -60,12 +57,14 @@ else:
     read_table['imageText'] = ''
 read_table['facebook_id'] = ingest_table['facebook_id']
 
-def main_table():
 
-    if os.path.exists('C:/Users/K3nXz/Desktop/sph/main.txt'):
-        read_table.to_csv('C:/Users/K3nXz/Desktop/sph/main.txt', sep='|', index=False,header=True)
+
+def post_table():
+
+    if os.path.exists('C:/Users/K3nXz/Desktop/sph/post.txt'):
+        read_table.to_csv('C:/Users/K3nXz/Desktop/sph/post.txt', sep='|', index=False,header=True)
     else:
-        read_table.to_csv('C:/Users/K3nXz/Desktop/sph/main.txt', sep='|', index=False,header=True)
+        read_table.to_csv('C:/Users/K3nXz/Desktop/sph/post.txt', sep='|', index=False,header=True)
 
 def media_table():
     media_table = pd.DataFrame(columns=['platformid','type','url','height','width','full'])
@@ -111,7 +110,7 @@ def statistic_table():
         statistic_table.to_csv('C:/Users/K3nXz/Desktop/sph/statistic.txt', sep='|', index=False, header=True)
 
       
-main_table()
+post_table()
 media_table()
 account_table()
 statistic_table()

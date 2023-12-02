@@ -3,7 +3,7 @@ import os
 
 #Parameter
 account='C:/Users/K3nXz/Desktop/sph/account.txt'
-account_new='C:/Users/K3nXz/Desktop/sph/account_new.txt'
+
 df = pd.read_csv(account, delimiter='|')
 df_new = pd.read_csv(account_new, delimiter='|')
 
