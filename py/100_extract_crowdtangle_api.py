@@ -61,10 +61,10 @@ read_table['facebook_id'] = ingest_table['facebook_id']
 
 def post_table():
 
-    if os.path.exists('C:/Users/K3nXz/Desktop/sph/post.txt'):
-        read_table.to_csv('C:/Users/K3nXz/Desktop/sph/post.txt', sep='|', index=False,header=True)
+    if os.path.exists('/home/kenny/txt/post.txt'):
+        read_table.to_csv('/home/kenny/txtpost.txt', sep='|', index=False,header=True)
     else:
-        read_table.to_csv('C:/Users/K3nXz/Desktop/sph/post.txt', sep='|', index=False,header=True)
+        read_table.to_csv('/home/kenny/txt/post.txt', sep='|', index=False,header=True)
 
 def media_table():
     media_table = pd.DataFrame(columns=['captionid','post_id','type','url','height','width','full'])
@@ -78,10 +78,10 @@ def media_table():
             else:
                 media_table = media_table._append({'captionid':ingest_table['captionid'][x],'post_id':ingest_table['post_id'][x],'type': df['type'], 'url': df['url'], 'height': df['height'], 'width': df['width'], 'full': None}, ignore_index=True)
 
-    if os.path.exists('C:/Users/K3nXz/Desktop/sph/media.txt'):
-        media_table.to_csv('C:/Users/K3nXz/Desktop/sph/media.txt', sep='|', index=False, header=True)
+    if os.path.exists('/home/kenny/txt/media.txt'):
+        media_table.to_csv('/home/kenny/txt/media.txt', sep='|', index=False, header=True)
     else:
-        media_table.to_csv('C:/Users/K3nXz/Desktop/sph/media.txt', sep='|', index=False, header=True)
+        media_table.to_csv('/home/kenny/txt/media.txt', sep='|', index=False, header=True)
 
 def account_table():
     account_table = pd.DataFrame(columns=['captionid','name','handle','profileImage','subscriberCount','url','platform','platformId','accountType','pageAdminTopCountry','verified'])
@@ -91,10 +91,10 @@ def account_table():
         account_table = account_table._append({'captionid': df['id'],'name':df['name'],'handle':df['handle'],'profileImage':df['profileImage'],'subscriberCount':df['subscriberCount'],'url':df['url'],'platform':df['platform'],'platformId':df['platformId'],'accountType':df['accountType'],'pageAdminTopCountry':df['pageAdminTopCountry'],'verified':df['verified']}, ignore_index=True)
         account_table = account_table.drop_duplicates()
     
-    if os.path.exists('C:/Users/K3nXz/Desktop/sph/account.txt'):
-        account_table.to_csv('C:/Users/K3nXz/Desktop/sph/account.txt', sep='|', index=False, header=True)
+    if os.path.exists('/home/kenny/txt/account.txt'):
+        account_table.to_csv('/home/kenny/txt/account.txt', sep='|', index=False, header=True)
     else:
-        account_table.to_csv('C:/Users/K3nXz/Desktop/sph/account.txt', sep='|', index=False, header=True)
+        account_table.to_csv('/home/kenny/txt/account.txt', sep='|', index=False, header=True)
 
 def statistic_table():
     statistic_table = pd.DataFrame(columns=['platformid','facebookid','postid','actual_likeCount','actual_shareCount','actual_commentCount','actual_loveCount','actual_wowCount','actual_hahaCount','actual_sadCount','actual_angryCount','actual_thankfulCount','actual_careCount','expected_likeCount','expected_shareCount','expected_commentCount','expected_loveCount','expected_wowCount','expected_hahaCount','expected_sadCount','expected_angryCount','expected_thankfulCount','expected_careCount'])
@@ -104,10 +104,10 @@ def statistic_table():
         statistic_table = statistic_table._append({'platformid':ingest_table['platformId'][x],'facebookid':ingest_table['facebook_id'][x],'postid':ingest_table['post_id'][x],'actual_likeCount':actual['likeCount'],'actual_shareCount':actual['shareCount'],'actual_commentCount':actual['commentCount'],'actual_loveCount':actual['loveCount'],'actual_wowCount':actual['wowCount'],'actual_hahaCount':actual['hahaCount'],'actual_sadCount':actual['sadCount'],'actual_angryCount':actual['angryCount'],'actual_thankfulCount':actual['thankfulCount'],'actual_careCount':actual['careCount'],'expected_likeCount':expected['likeCount'],'expected_shareCount':expected['shareCount'],'expected_commentCount':expected['commentCount'],'expected_loveCount':expected['loveCount'],'expected_wowCount':expected['wowCount'],'expected_hahaCount':expected['hahaCount'],'expected_sadCount':expected['sadCount'],'expected_angryCount':expected['angryCount'],'expected_thankfulCount':expected['thankfulCount'],'expected_careCount':expected['careCount']}, ignore_index=True)
 
     
-    if os.path.exists('C:/Users/K3nXz/Desktop/sph/statistic.txt'):
-        statistic_table.to_csv('C:/Users/K3nXz/Desktop/sph/statistic.txt', sep='|', index=False, header=True)
+    if os.path.exists('/home/kenny/txt/statistic.txt'):
+        statistic_table.to_csv('/home/kenny/txt/statistic.txt', sep='|', index=False, header=True)
     else:
-        statistic_table.to_csv('C:/Users/K3nXz/Desktop/sph/statistic.txt', sep='|', index=False, header=True)
+        statistic_table.to_csv('/home/kenny/txt/statistic.txt', sep='|', index=False, header=True)
 
       
 post_table()

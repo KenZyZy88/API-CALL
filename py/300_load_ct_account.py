@@ -12,9 +12,9 @@ current_datetime_str = current_datetime.strftime("%Y-%m-%d_%H-%M-%S")
 print(current_datetime_str)
 
 #Paramenter & Definations
-account_file='C:/Users/K3nXz/Desktop/sph/account.txt'
+account_file='/home/kenny/txt/account.txt'
 
-conn = psycopg2.connect(host= 'localhost',
+conn = psycopg2.connect(host= '192.168.0.189',
                         user='postgres',
                         password='postgres',
                         database='indb',
