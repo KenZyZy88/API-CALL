@@ -14,7 +14,7 @@ print(current_datetime_str)
 #Paramenter & Definations
 statistic_file='/home/kenny/txt/statistic.txt'
 
-conn = psycopg2.connect(host= '192.168.0.189',
+conn = psycopg2.connect(host= '192.168.0.200',
                         user='postgres',
                         password='postgres',
                         database='indb',

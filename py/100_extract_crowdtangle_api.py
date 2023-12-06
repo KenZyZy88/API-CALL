@@ -36,7 +36,11 @@ read_table['post_id'] = ingest_table['post_id']
 read_table['title'] = ingest_table['title']
 read_table['captionid'] = ingest_table['captionid']
 read_table['caption'] = ingest_table['caption']
-read_table['description'] = ingest_table['description']
+if 'description' in ingest_table.columns:
+    read_table['description'] = ingest_table['description']
+else:
+    read_table['description'] = ''
+read_table['facebook_id'] = ingest_table['facebook_id']
 read_table['message'] = ingest_table['message']
 read_table['expandedLinks'] = ingest_table['expandedLinks']
 read_table['link'] = ingest_table['link']
