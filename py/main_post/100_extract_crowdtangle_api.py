@@ -62,11 +62,17 @@ else:
 read_table['facebook_id'] = ingest_table['facebook_id']
 
 
+def all_table():
+
+    if os.path.exists('/home/kenny/txt/all.txt'):
+        ingest_table.to_csv('/home/kenny/txt/all.txt', sep='|', index=False,header=True)
+    else:
+        ingest_table.to_csv('/home/kenny/txt/all.txt', sep='|', index=False,header=True)
 
 def post_table():
 
     if os.path.exists('/home/kenny/txt/post.txt'):
-        read_table.to_csv('/home/kenny/txtpost.txt', sep='|', index=False,header=True)
+        read_table.to_csv('/home/kenny/txt/post.txt', sep='|', index=False,header=True)
     else:
         read_table.to_csv('/home/kenny/txt/post.txt', sep='|', index=False,header=True)
 
@@ -113,7 +119,7 @@ def statistic_table():
     else:
         statistic_table.to_csv('/home/kenny/txt/statistic.txt', sep='|', index=False, header=True)
 
-      
+all_table() 
 post_table()
 media_table()
 account_table()

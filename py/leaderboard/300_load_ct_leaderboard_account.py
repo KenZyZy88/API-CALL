@@ -13,7 +13,7 @@ print(current_datetime_str)
 
 #Paramenter & Definations
 # account_file='/home/kenny/txt/account.txt' #Linux
-leaderboard_account_file='C:/Users/K3nXz/Desktop/sph/leaderboard_account.txt'
+leaderboard_account_file='/home/kenny/txt/leaderboard_account.txt'
 
 conn = psycopg2.connect(host= '192.168.0.200',
                         user='postgres',

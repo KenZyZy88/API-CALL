@@ -19,8 +19,14 @@ dag = DAG(
     default_args=default_args,
     description='API to retreive post posted in Facebook',
     #schedule_interval='*/10 * * * *', # Run every 10 minutes
-    schedule_interval='@hourly', # Test script work with actual data
+    schedule_interval='0 */6 * * *', # Test script work with actual data
     catchup=False,
+)
+
+backup = BashOperator(
+    task_id='000_backup',
+    bash_command='python3 /home/kenny/py/000_backup.py',
+    dag=dag,
 )
 
 
@@ -62,7 +68,7 @@ load_media = BashOperator(
 )
 
 
-
+backup >> extract
 extract >> load_post
 extract >> transform_media >> load_media
 extract >> load_account
