@@ -25,6 +25,8 @@ read_table = pd.DataFrame(columns=['platformId','platform','date','updated','typ
 ingest_table[['facebook_id', 'post_id']] = ingest_table['platformId'].str.split('_', expand=True)
 ingest_table['captionid'] = [row.split('|')[0] for row in ingest_table['id']]
 ingest_table['title'] = ingest_table['title'].str.replace('|', '')
+ingest_table['message'] = ingest_table['message'].str.replace('|', '')
+ingest_table['description'] = ingest_table['description'].str.replace('|', '')
 
 #Ingest data to read_table - move to NoSQL if have time
 read_table['platformId'] = ingest_table['platformId']
