@@ -4,8 +4,9 @@ All files here are related to SPH Assessment.
 
 ## Upcoming revisions
 
-1. Change txt to use apache parquet
-      Can be done by apache spark
+1. Change txt to use apache parquet.
+
+Can be done by apache spark
 ```
        from pyspark.sql import SparkSession
 
@@ -20,4 +21,4 @@ text_df.write.parquet("path/to/parquet/file.parquet")
 ```
 2. check on pagination 
 3. backfield data
-4. Use Apache spark
+4. Rewrite process to support parquet. Use Apache spark
