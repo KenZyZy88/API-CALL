@@ -12,11 +12,11 @@ print(current_datetime_str)
 
 
 #Paramenter & Definations
-statistic_file='/home/kenny/txt/statistic.txt'
+statistic_file='******/txt/statistic.txt'
 
-conn = psycopg2.connect(host= '192.168.0.200',
+conn = psycopg2.connect(host= '192.168.0.***',
                         user='postgres',
-                        password='postgres',
+                        password='********',
                         database='indb',
                         port='5432',
                         )           
