@@ -12,11 +12,11 @@ print(current_datetime_str)
 
 
 #Paramenter & Definations
-media_file='/home/kenny/txt/media.txt'
+media_file='*******/txt/media.txt'
 
-conn = psycopg2.connect(host= '192.168.0.200',
+conn = psycopg2.connect(host= '192.168.0.***',
                         user='postgres',
-                        password='postgres',
+                        password='******',
                         database='indb',
                         port='5432',
                         )           
